@@ -1,0 +1,59 @@
+body {
+  background: url('/images/background.jpg') repeat;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #584303;
+}
+
+.wrapper {
+  width: 600px;
+  margin: auto;
+  background: white;
+  padding: 0 60px 60px 60px;
+
+  border: 1px solid white;
+
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+
+  -webkit-box-shadow: 0px 3px 12px 3px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 3px 12px 3px rgba(0, 0, 0, 0.25);
+}
+
+h1.logo {
+  background: url('/images/logo-600.jpg') no-repeat top center;
+  height: 300px;
+  text-indent: -9999px;
+}
+
+h2 {
+  color: #333;
+}
+
+h2.alpha {
+  color: #0c90a7;
+}
+
+h2.beta {
+  color: #b1cd44;
+}
+
+h2.gamma {
+  color: #e67974;
+}
+
+h2.link {
+  text-align: center;
+  margin-top: 40px;
+}
+
+h2 a {
+  text-decoration: none;
+  color: white;
+  font-size: 120%;
+
+  border: 1px solid #d9af2f;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  background: #d9af2f;
+  padding: 6px 18px;
+}
