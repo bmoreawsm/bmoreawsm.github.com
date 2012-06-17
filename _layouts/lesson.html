@@ -2,11 +2,13 @@
 <html>
   <head>
     <title>{{ page.title }} - B'more Awesome</title>
+    <link href="/google-code-prettify/prettify.css" type="text/css" rel="stylesheet">
     <link href="/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="/stylesheets/lesson.css" type="text/css" rel="stylesheet">
     {% include google-analytics.html %}
+    <script type="text/javascript" src="/google-code-prettify/prettify.js"></script>
   </head>
-  <body>
+  <body onload="prettyPrint()">
     <div class='container'>
       <div class='row'>
         <div class='span3'>

@@ -1,5 +1,8 @@
 <ul class='nav nav-list'>
-  {% nav_link /bhc/index.html Beginning HTML &amp; CSS %}
+  {% if page.url == "/bhc/index.html" %}<li class='active'>{% else %}<li>{% endif %}
+  <a href='/bhc/'>Beginning HTML &amp; CSS</a></li>
+
   <li class='nav-header'>Lessons</li>
-  {% nav_link /bhc/1-make-a-file.html 1: Make an HTML File %}
+  {% if page.url == "/bhc/1-make-a-file.html" %}<li class='active'>{% else %}<li>{% endif %}
+  <a href='/bhc/1-make-a-file.html'>1: Make an HTML File</a></li>
 </ul>
