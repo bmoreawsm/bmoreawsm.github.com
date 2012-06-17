@@ -19,3 +19,7 @@ body > .container {
 .hero-unit {
   padding: 52px;
 }
+
+p {
+  font-size: 14px;
+}
