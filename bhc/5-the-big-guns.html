@@ -1,0 +1,87 @@
+---
+layout: lesson
+title: The Big Guns
+---
+
+<div class='hero-unit'>
+  <h1>The Big Guns</h1>
+  <p>There's more than one way to use CSS, and it can get pretty fancy. In this lesson we're going to learn how to implement a common pattern: a centered fixed-width page.</p>
+</div>
+
+<h2>1. Add a container</h2>
+<p>The first thing we're going to do is add a container around our entire page's content. We're going to use a <code>div</code> element, which is used to define a section in the document. For example, here is a before and after:</p>
+<h3>Before</h3>
+<pre class='prettyprint linenums'>
+&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello&lt;/title&gt;
+    &lt;style&gt;p { color: #ff0000; }&lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ice Cream&lt;/h1&gt;
+    &lt;p&gt;I love ice cream!&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h3>After</h3>
+<pre class='prettyprint linenums'>
+&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello&lt;/title&gt;
+    &lt;style&gt;p { color: #ff0000; }&lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    <b>&lt;div&gt;</b>
+      &lt;h1&gt;Ice Cream&lt;/h1&gt;
+      &lt;p&gt;I love ice cream!&lt;/p&gt;
+    <b>&lt;/div&gt;</b>
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p>Note that adding a div doesn't actually change the page at all.</p>
+
+<h2>2. Add a CSS class</h2>
+<p>If we added a rule for <code>div</code>s, it would apply to every div on the page. However, we only want to apply this rule to this one kind of div. To do this, we're going to add a CSS class to the div, like this:</p>
+<pre class='prettyprint linenums'>
+&lt;div class='container'&gt;
+</pre>
+<p>You only need to add the class to the opening tag, not the closing one.</p>
+
+<h2>3. Add the style</h2>
+<p>Now that our class is in place, we can reference the class in our CSS using a <code>.</code>. A <code>.</code> means that we are targeting a CSS class name, and not a tag name. For example, let's simply change the background color:</p>
+<pre class='prettyprint linenums'>
+.container {
+  background-color: #cccccc;
+}
+</pre>
+<p>Refresh the page, and you'll see that everything inside the container div has a grey background.</p>
+
+<h2>4. Fix the width</h2>
+<p>We'd like our page to have a fixed with, so let's set the width of our container div.</p>
+<pre class='prettyprint linenums'>
+.container {
+  background-color: #cccccc;
+  <b>width: 600px;</b>
+}
+</pre>
+<p>This will set the width of the div to exactly 600 pixels.</p>
+
+<h2>5. Center it</h2>
+<p>Centering is where we're going to get a little crafty. We're going to use the <code>margin</code> CSS rule, which will add space around an object. Instead of adding a fixed amount of space, we're going to tell the browser to automatically space it for us. The <code>margin</code> rule takes 4 values: top right bottom left. Let's set it up.</p>
+<pre class='prettyprint linenums'>
+.container {
+  background-color: #cccccc;
+  width: 600px;
+  <b>margin: 0 auto 0 auto;</b>
+}
+</pre>
+<p>The top and bottom values are <code>0</code>, since we don't want to add any extra space there. And the left and right margins are set to <code>auto</code> to let the browser automatically position it horizontally.</p>
+
+<h2>6. Discussion</h2>
+<p>Try different values for the top and bottom margin, the width, and the background color. Once you've found something you like, share it with your neighbor.</p>
+
+<hr>
+<a href="/bhc/6-demo.html" class='btn btn-primary'>Next Lesson &raquo;</a>

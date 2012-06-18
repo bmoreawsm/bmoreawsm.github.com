@@ -20,6 +20,14 @@ body > .container {
   padding: 52px;
 }
 
-p {
+p, li {
   font-size: 14px;
+}
+
+ul.nav li {
+  font-size: 13px;
+}
+
+pre b {
+  background: #ffff99;
 }
