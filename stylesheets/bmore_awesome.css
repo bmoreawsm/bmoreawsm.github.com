@@ -72,3 +72,7 @@ p.date {
 a, a:hover, a:visited {
   color: #c18600;
 }
+
+blockquote footer {
+  text-align: right;
+}
