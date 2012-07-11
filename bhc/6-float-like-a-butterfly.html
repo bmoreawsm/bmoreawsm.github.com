@@ -1,0 +1,56 @@
+---
+layout: lesson
+title: Float Like a Butterfly
+---
+
+<div class='hero-unit'>
+  <h1>Float Like a Butterfly</h1>
+  <p>Horizontally laying out content is done with divs and floating<br/>In this lesson we're going to implement another common pattern: a sidebar</p>
+</div>
+
+<h2>1. Add a content div and a sidebar div</h2>
+<p>Similar to the last section, we need to wrap a portion of our content inside a <code>div</code>. Wrap everything within the container div inside another div called "content". Also, before the content, make a sidebar div with our future sidebar content in it. So now, your page structure should look something like:</p>
+
+<pre class='prettyprint linenums'>
+&lt;div class='container'&gt;
+  &lt;div class='sidebar'&gt;
+    This is my sidebar!
+  &lt;/div&gt;
+  &lt;div class='content'&gt;
+    Your page content
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<p>What you'll notice is that the sidebar is on top of the content. Next, we'll move it to the side with css.</p>
+
+<h2>2. Float the sidebar and content with css</h2>
+
+<p>Floating tells an element to flow horizontally in a particular direction. In our case, we want the sidebar and content to flow to the left (left-aligned). We need to do two things: set their float property and give them a smaller width so they don't take up all the space. For the width, we need to be sure that their total width is less than or equal to the container width so they can fit next to each other.</p>
+
+<pre class='prettyprint linenums'>
+.container {
+  background-color: #cccccc;
+  width: 600px;
+  margin: 0 auto 0 auto;
+}
+
+.sidebar {
+  float: left;
+  width: 200px;
+}
+
+.content {
+  float: left;
+  width: 400px;
+}
+</pre>
+
+<p>Now, the sidebar should be next to the content!</p>
+
+<h2>6. Discussion</h2>
+
+<p>Experiment with different divisions of your available width to divide up the page in different ways. Think about this: can every page of the web be created simply with horizontal floats and vertical divs?</p>
+
+<hr>
+<a href="/bhc/7-demo.html" class='btn btn-primary'>Next Lesson &raquo;</a>
