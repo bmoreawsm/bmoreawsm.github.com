@@ -73,6 +73,8 @@ a, a:hover, a:visited {
   color: #c18600;
 }
 
+blockquote { margin-bottom: 50px; }
+
 blockquote footer {
   text-align: right;
 }
