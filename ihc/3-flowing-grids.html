@@ -1,0 +1,112 @@
+---
+layout: ihc
+title: Flowing Grids
+---
+<div class='hero-unit'>
+  <h1>Flowing Grids</h1>
+  <p>Displaying media in a grid is an effective way to use screen space<br>In this lesson, we'll build an image grid that automatically flows</p>
+</div>
+
+<h2>1. Fixed Grid</h2>
+
+<p>Create a new html file with an empty body and its own stylesheet. First, we'll start off simple with a fixed grid:</p>
+
+<pre class='prettyprint linenums'>
+&lt;div class='image-grid'&gt;
+  &lt;img src='http://bmoreaweso.me/images/background.jpg'&gt;
+  &lt;img src='http://bmoreaweso.me/images/background.jpg'&gt;
+  &lt;img src='http://bmoreaweso.me/images/background.jpg'&gt;
+  &lt;img src='http://bmoreaweso.me/images/background.jpg'&gt;
+  &lt;img src='http://bmoreaweso.me/images/background.jpg'&gt;
+  &lt;img src='http://bmoreaweso.me/images/background.jpg'&gt;
+  &lt;img src='http://bmoreaweso.me/images/background.jpg'&gt;
+  &lt;img src='http://bmoreaweso.me/images/background.jpg'&gt;
+  &lt;img src='http://bmoreaweso.me/images/background.jpg'&gt;
+  &lt;img src='http://bmoreaweso.me/images/background.jpg'&gt;
+&lt;/div&gt;
+</pre>
+
+<p>And some css to have them float with some space between them:</p>
+<pre class='prettyprint linenums'>
+.image-grid {
+  width: 840px;
+  margin: auto;
+  background-color: gray;
+}
+.image-grid img {
+  width: 200px;
+  height: 200px;
+  margin: 0 10px 10px 0;
+  display: block;
+  float: left;
+}
+.image-grid:after {
+  clear: both;
+  content: " ";
+  display: table;
+}
+</pre>
+
+<p>Let's break this down. We've got a grid that's 840px wide and it has a background color so we can see it clearly.</p>
+
+<p>Each grid item is 200x200 and it has a margin below and after it. It is also being displayed as a block and floating left so it flows smoothly across the page before wrapping.</p>
+
+<p>The last section is what's known as a "clearfix". This adds an imaginary element after the grid that clears the floated components. In many frameworks this is included as a .clearfix class, but here we just add it in ourselves for this example.</p>
+
+<p>What are some of the shortcomings of this design? Are we making full use of available space?</p>
+
+<h2>2. Trim the grid</h2>
+
+<p>First, let's trim the edges of the grid. We'd like to remove the right margin on every fourth element so that they are flush with the edge. We'd also like to remove the margin on the bottom of the last elements.</p>
+
+<pre class='prettyprint linenums'>
+.image-grid img:nth-child(4n+4) {
+  margin-right: 0;
+}
+.image-grid {
+  width: 830px;
+}
+</pre>
+
+<p>The nth-child selector allows us to apply rules only to certain elements in a group. Think of it as a number generator. The browser plugs in numbers 0, 1, 2, 3, etc for n, and your formula spits out numbers. In our case, our formula produces these results:</p>
+
+<table class='table'>
+  <tr>
+    <th>n</th>
+    <th>4n+4</th>
+  </tr>
+  <tr><td>0</td><td>4</td></tr>
+  <tr><td>1</td><td>8</td></tr>
+  <tr><td>2</td><td>12</td></tr>
+  <tr><td>3</td><td>16</td></tr>
+</table>
+
+<p>That means that the 4th, 8th, 12th, 16th, etc element will have those styles applied. In our case, since we have 4 across in our grid, that's the last element. So we can remove the right margin.</p>
+
+<p>Now what about the bottom? This is tricky, because we don't know how many items could be in the grid. The last 4 could actually only be 3, or 2 elements. And even if it is exactly 4, it could be 16-20, or 96-100! So, we're going to flip our margins upside down:</p>
+
+<pre class='prettyprint linenums'>
+.image-grid img {
+  margin: 10px 10px 0 0;
+}
+.image-grid img:nth-child(-1n+4) {
+  margin-top: 0;
+}
+</pre>
+
+<p>Instead of a margin on the bottom, we'll make it on top. Then we know we want to just remove the margin from the first 4, which is always the same. So, we use a formula that runs in reverse, and we give it a head start of 4. This formula generates numbers like:</p>
+
+<table class='table'>
+  <tr>
+    <th>n</th>
+    <th>4n+4</th>
+  </tr>
+  <tr><td>0</td><td>4</td></tr>
+  <tr><td>1</td><td>3</td></tr>
+  <tr><td>2</td><td>2</td></tr>
+  <tr><td>3</td><td>1</td></tr>
+  <tr><td>4</td><td>0</td></tr>
+  <tr><td>5</td><td>-1</td></tr>
+</table>
+
+<p>But there is no element 0, nor -1, nor any less than that, so they don't apply to anything. Tricky!</p>

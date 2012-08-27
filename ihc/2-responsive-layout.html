@@ -1,0 +1,91 @@
+---
+layout: ihc
+title: Responsive Layout
+---
+<div class='hero-unit'>
+  <h1>Responsive Layout</h1>
+  <p>Some visitors have more screen space than others<br>In this lesson, we'll build a layout that changes based on screen size</p>
+</div>
+
+<h2>1. Simple Layout</h2>
+
+<p>Before we get to the responsive component, let's implement a simple layout. Just a header, sidebar, and footer.</p>
+
+<p>First, let's setup the html, re-using our index.html page:</p>
+
+<pre class='prettyprint linenums'>
+&lt;body&gt;
+  &lt;div class='wrapper'&gt;
+    &lt;div class='sidebar'&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href='#'&gt;Link one&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href='#'&gt;Link two&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href='#'&gt;Link three&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class='header'&gt;
+      &lt;h1&gt;Site title&lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;div class='content'&gt;
+      &lt;p&gt;Enough lorem ipsum to make the page scroll.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class='footer'&gt;
+      Made by Me!
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+</pre>
+
+<p>And the css for the basic layout:</p>
+
+<pre class='prettyprint linenums'>
+.wrapper {
+  margin: auto;
+}
+.wrapper, .footer {
+  width: 600px;
+}
+.header, .content {
+  width: 450px;
+}
+.sidebar {
+  width: 150px;
+}
+.footer {
+  clear: both;
+}
+.header, .sidebar, .content {
+  float: left;
+}
+</pre>
+
+<h2>2. Responsive CSS</h2>
+
+<p>We'd like to have a more fluid layout when someone visits on a smaller device. Since we have a 600px layout, our cutoff point will be 600px.</p>
+
+<p>To do this, we're going to use a css feature called media queries. Here is our css for the media query:</p>
+
+<pre class='prettyprint linenums'>
+@media (max-width: 600px) {
+  .wrapper, .footer {
+    width: 100%;
+  }
+  .header, .content {
+    width: 75%;
+  }
+  .sidebar {
+    width: 25%;
+  }
+}
+</pre>
+
+<p>The @media tag can respond to a number of different rules, like min-width, orientation, and even the device width.</p>
+
+<h2>3. Experiment</h2>
+
+<p>Experiment with different media queries and layouts. For example, could you bump up the size of the layout for people with very large screens? What about putting the sidebar at the bottom for a very small screen?</p>
+
+<p>What about responsive typography? How would you change font size for different devices? What else could you change on a site based on size?</p>
+
+<hr>
+<a href="/ihc/3-flowing-grids.html" class='btn btn-primary'>Next Lesson &raquo;</a>

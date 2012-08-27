@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <title>flowing grid</title>
+    <style>
+      .image-grid {
+        width: 840px;
+        background-color: gray;
+        margin: auto;
+      }
+      .image-grid img {
+        width: 200px;
+        height: 200px;
+        margin: 0 10px 10px 0;
+        display: block;
+        float: left;
+      }
+      .image-grid:after {
+        clear: both;
+        content: " ";
+        display: table;
+      }
+
+      .image-grid img:nth-child(4n+4) {
+        margin-right: 0;
+      }
+      .image-grid {
+        width: 830px;
+      }
+
+      .image-grid img {
+        margin: 10px 10px 0 0;
+      }
+      .image-grid img:nth-child(-1n+4) {
+        margin-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class='image-grid'>
+      <img src='http://bmoreaweso.me/images/background.jpg'>
+      <img src='http://bmoreaweso.me/images/background.jpg'>
+      <img src='http://bmoreaweso.me/images/background.jpg'>
+      <img src='http://bmoreaweso.me/images/background.jpg'>
+      <img src='http://bmoreaweso.me/images/background.jpg'>
+      <img src='http://bmoreaweso.me/images/background.jpg'>
+      <img src='http://bmoreaweso.me/images/background.jpg'>
+      <img src='http://bmoreaweso.me/images/background.jpg'>
+      <img src='http://bmoreaweso.me/images/background.jpg'>
+      <img src='http://bmoreaweso.me/images/background.jpg'>
+    </div>
+  </body>
+</html>
+
+
