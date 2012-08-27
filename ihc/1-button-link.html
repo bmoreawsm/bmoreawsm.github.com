@@ -1,0 +1,155 @@
+---
+layout: ihc
+title: Button Link
+---
+<div class='hero-unit'>
+  <h1>Button Link</h1>
+  <p>Many sites feature links that look like buttons<br/>In this lesson, we'll make a utility class that makes links look like buttons</p>
+</div>
+
+<h2>1. Setup an html scaffold</h2>
+<p>Create the following files in a new folder:</p>
+<ol>
+  <li>index.html</li>
+  <li>about.html</li>
+  <li>styles.css</li>
+</ol>
+
+<p>In index.html, create an html5 scaffold:</p>
+
+<pre class='prettyprint linenums'>
+&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Index&lt;/title&gt;
+    &lt;link href="/styles.css" type="text/css" rel="stylesheet"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Index&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p>In about.html, place the same code, but change the header:</p>
+
+<pre class='prettyprint linenums'>
+&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Index&lt;/title&gt;
+    &lt;link href="/styles.css" type="text/css" rel="stylesheet"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;About&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p>In styles.css, make a small change to ensure it is working:</p>
+
+<pre class='prettyprint linenums'>
+h1 {
+  color: #f00;
+}
+</pre>
+
+<p>Open index.html and about.html in your browser. Ensure index.html says Index and about.html says About. Ensure the headers are red in both cases.</p>
+
+<h2>2. Link between the sites</h2>
+
+<p>Let's add a link from one page to the other. Below the header in index.html, add the following link:</p>
+
+<pre class='prettyprint linenums'>
+&lt;a href='about.html'&gt;About&lt;/a&gt;
+</pre>
+
+<p>This is known as a <strong>relative</strong> link, because the link is relative to the location of the file it is in. Without a <strong>/</strong> at the front of the href, it will look in the current folder.</p>
+
+<p>Click the link. It should take you to the about page. Add a link to the index on the about page.</p>
+
+<h2>3. Put about in a folder</h2>
+<p>Our site would get disorganized if we put everything at the root. Create a folder called "info" and move about to that folder.</p>
+
+<p>Our links are now broken. Edit index.html and change the link to "info/about.html". Now edit about.html, what should the link be? Here's a hint: ".." means "the folder above me".</p>
+
+<h2>4. Basic button link style</h2>
+
+<p>Now that our html structure is all set up, let's make the link look nice. We'll start by making it look boxier:</p>
+
+<pre class='prettyprint linenums'>
+.bma-button {
+  padding: 4px 8px;
+  border: 1px solid #eee;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+}
+</pre>
+
+<p>Let's ask a few questions:</p>
+<ol>
+  <li>How do we add that style to our link?</li>
+  <li>What is better, a css class generally named "button" or specifically named "about-link"? Why?</li>
+  <li>Why do we need two rules for border radius?</li>
+</ol>
+
+<h2>5. Gradients</h2>
+
+<p>The button is pretty plain, let's modify the background to give it a more rounded feel:</p>
+
+<pre class'prettyprint linenums'>
+.bma-button {
+  background-image: -webkit-linear-gradient(top, #faa, #c88);
+  background-image:    -moz-linear-gradient(top, #faa, #c88);
+  background-image:      -o-linear-gradient(top, #faa, #c88);
+  background-image:     -ms-linear-gradient(top, #faa, #c88);
+  border: 1px solid #c88;
+}
+</pre>
+
+<p>We also update the color and border color for continuity.</p>
+
+<h2>6. Hover transition</h2>
+
+<p>It looks great, until we move our mouse over it. Let's add a hover state:</p>
+
+<pre class='prettyprint linenums'>
+.bma-button {
+  background-color: #c88;
+  background-repeat: repeat-x;
+}
+.bma-button:hover {
+  background-position: 0 -10px;
+  color: white;
+  text-decoration: none;
+}
+</pre>
+
+<p>We have to add in a background color and repeat so our hover simply slides the gradient up, which makes it look hovered.</p>
+
+<p>But that's not enough for us, let's make it extra snazzy with a sliding transition:</p>
+
+<pre class='prettyprint linenums'>
+.bma-button:hover {
+  -webkit-transition: background-position 300ms ;
+     -moz-transition: background-position 300ms ;
+      -ms-transition: background-position 300ms ;
+       -o-transition: background-position 300ms ;
+          transition: background-position 300ms ;
+}
+</pre>
+
+<p>Last, let's add an "active" state, which is used when the mouse button is down:</p>
+
+<pre class='prettyprint linenums'>
+.bma-button:active {
+  background-image: none;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+</pre>
+
+<p>Using an inset box shadow gives the impression of a button that is being pushed into the surface. Active states are very subtle are a noticable feedback for the user.</p>
+
+<hr>
+<a href="/ihc/2-responsive-fixed-layout.html" class='btn btn-primary'>Next Lesson &raquo;</a>

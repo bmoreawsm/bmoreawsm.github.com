@@ -13,7 +13,7 @@ body > .container {
 }
 
 .hero-unit h1 {
-  font-size: 52px;
+  font-size: 48px;
 }
 
 .hero-unit {
@@ -25,9 +25,21 @@ p, li {
 }
 
 ul.nav li {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 pre b {
   background: #ffff99;
+}
+
+.bma-button {
+  padding: 4px 8px;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  background-image: -webkit-linear-gradient(top, #faa, #c88);
+  background-image:    -moz-linear-gradient(top, #faa, #c88);
+  background-image:      -o-linear-gradient(top, #faa, #c88);
+  background-image:     -ms-linear-gradient(top, #faa, #c88);
+  color: white;
+  border: 1px solid #c88;
 }
