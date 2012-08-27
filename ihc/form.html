@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <title>form</title>
+    <style>
+      form {
+        width: 400px;
+        margin: auto;
+      }
+
+      fieldset.horizontal input {
+        display: block;
+        width: 75%;
+        float: right;
+      }
+      fieldset.horizontal label {
+        display: block;
+        width: 10%;
+        clear: both;
+        float: left;
+      }
+
+      .field.checkbox {
+        padding-left: 40px;
+      }
+
+      .field.checkbox input {
+        margin-left: -30px;
+        float: left;
+      }
+
+      .field.checkbox label {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <fieldset class='horizontal'>
+        <legend>Contact Info</legend>
+        
+        <div class='field'>
+          <label for='name'>Name</label>
+          <input name='name' id='name'>
+        </div>
+
+        <div class='field'>
+          <label for='email'>Email</label>
+          <input name='email' id='email'>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Feedback</legend>
+
+        <div class='field checkbox'>
+          <input type='checkbox' name='satisfied' id='satisfied'>
+          <label for='satisfied'>I was satisfied</label>
+        </div>
+
+        <div class='field'>
+          <p>How satisfied were you?</p>
+          <input type='radio' name='level' value='very' id='level-very'>
+          <label for='level-very'>Very</label>
+        </div>
+
+        <div class='field'>
+          <input type='radio' name='level' value='not-much' id='level-not-much'>
+          <label for='level-not-much'>Not much</label>
+        </div>
+
+        <div class='field'>
+          <label for='comments'>Additional comments:</label>
+          <textarea name='comments'></textarea>
+        </div>
+      </fieldset>
+    </form>
+  </body>
+</html>

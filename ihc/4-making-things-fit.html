@@ -1,0 +1,132 @@
+---
+layout: ihc
+title: Making Things Fit
+---
+<div class='hero-unit'>
+  <h1>Making Things Fit</h1>
+  <p>One of the most challenging aspects in html &amp; css is laying things out<br>In this lesson we'll try a few different layout styles</p>
+</div>
+
+<h2>1. A Simple form</h2>
+
+<p>Forms are a great example of combining a variety of objects in complicated layouts. For this example, we'll build a survey and try a few different layout techniques.</p>
+
+<p>Let's start with our form, in a new file with its own stylesheet called form.html:</p>
+
+<pre class='prettyprint linenums'>
+&lt;form&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Contact Info&lt;/legend&gt;
+    
+    &lt;label for='name'&gt;Name&lt;/label&gt;
+    &lt;input name='name' id='name'&gt;
+
+    &lt;label for='email'&gt;Email&lt;/label&gt;
+    &lt;input name='email' id='email'&gt;
+  &lt;/fieldset&gt;
+
+  &lt;fieldset&gt;
+    &lt;legend&gt;Feedback&lt;/legend&gt;
+
+    &lt;input type='checkbox' name='satisfied' id='satisfied'&gt;
+    &lt;label for='satisfied'&gt;I was satisfied&lt;/label&gt;
+
+    &lt;p&gt;How satisfied were you?&lt;/p&gt;
+
+    &lt;input type='radio' name='level' value='very' id='level-very'&gt;
+    &lt;label for='level-very'&gt;Very&lt;/label&gt;
+
+    &lt;input type='radio' name='level' value='not-much' id='level-not-much'&gt;
+    &lt;label for='level-not-much'&gt;Not much&lt;/label&gt;
+
+    &lt;label for='comments'&gt;Additional comments:&lt;/label&gt;
+    &lt;textarea name='comments'&gt;&lt;/textarea&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
+
+<p>Take a look. Pretty terrible, isn't it? Aesthetics aside, there are some major layout issues. For example:</p>
+
+<ol>
+  <li>Label and input widths are not consistent</li>
+  <li>Fields are not aligned horizontally with each other</li>
+  <li>Text area does not align vertically with its label</li>
+</ol>
+
+<p>What else?</p>
+
+<h2>2. Grouping</h2>
+
+<p>First of all, let's group our form elements so that the label and input are grouped in a div together. This will give the form a vertical feel. For example:</p>
+
+<pre class='prettyprint linenums'>
+&lt;div class='field'&gt;
+  &lt;label for='name'&gt;Name&lt;/label&gt;
+  &lt;input name='name' id='name'&gt;
+&lt;/div&gt;
+</pre>
+
+<h2>3. Width</h2>
+
+<p>Now, let's get a handle on the widths of elements, first the form:</p>
+
+<pre class='prettyprint linenums'>
+form {
+  width: 400px;
+  margin: auto;
+}
+</pre>
+
+<p>For the Information section, let's use a horizontal layout:</p>
+
+<pre class='prettyprint linenums'>
+fieldset.horizontal input {
+  display: block;
+  width: 75%;
+  float: right;
+}
+fieldset.horizontal label {
+  display: block;
+  width: 10%;
+  clear: both;
+  float: left;
+}
+</pre>
+
+<p>On your own, fix up the vertical alignment of the name and email fields. Keep in mind an input's height is the combination of height, padding, and border. A label is text, so its height is based on line-height. Style the input elements a bit nicer by changing padding, border, and event font-size.</p>
+
+<h2>4. Spacing</h2>
+
+<p>The checkbox could use some room to breath, and so could the radio buttons. Let's add some space:</p>
+
+<pre class='prettyprint linenums'>
+.field.checkbox {
+  padding-left: 40px;
+}
+
+.field.checkbox input {
+  margin-left: -30px;
+  float: left;
+}
+
+.field.checkbox label {
+  display: block;
+}
+</pre>
+
+<p>We'll need to add the checkbox class to the field container for our checkbox. We could have put fixed-width containers around the input and the label to space them out, but this requires much less html markup. It also allows for different browsers to have differently sized checkbox objects and they all fit as long as they're less than 30 pixels wide.</p>
+
+<h2>5. Radio</h2>
+
+<p>Now let's work on the radio buttons. Perform the same style as the checkboxes, but in addition, lay them out horizontally, 50/50 like the name and email field.</p>
+
+<h2>6. Textarea</h2>
+
+<p>We'll end on an easy one. Have the textarea be full width, below its label. And give it a few more rows so there's space to type.</p>
+
+<h2>7. Tweak</h2>
+
+<p>Make some other improvements to the form. Aesthetic or layout. You're the designer!</p>
+
+<hr>
+<a href="/ihc/5-wrap-up.html" class='btn btn-primary'>Next Lesson &raquo;</a>
