@@ -1,0 +1,121 @@
+---
+layout: bjs
+title: Javascript Basics
+---
+<div class='hero-unit'>
+  <h1>{{ page.title }}</h1>
+  <p>Javascript has a number of basic language features<br>In this lesson, we'll add functionality to our page</p>
+</div>
+
+<h2>Functions</h2>
+
+<p>As we saw in the previous lesson, code can be encapsulated into a function and then run from a different point. Let's add another function and have one call the other:</p>
+
+<pre class='prettyprint linenums'>
+function message() {
+  return 'hey there, world!';
+}
+function sayHello() {
+  alert(message());
+}
+</pre>
+
+<p>When <code>sayHello</code> runs, it makes an alert, but it gets the text for the alert from another function, <code>message</code>. <code>message</code> does something new: <code>return</code>. Return will send data back to the place the function was called. That means that the returned string gets plugged in to the <code>alert</code> function. Pretty neat!</p>
+
+<p>Now, it wouldn't be fun if functions always did the same thing, so let's add a parameter:</p>
+
+<pre class='prettyprint linenums'>
+function message(name) {
+  return 'hey there, ' + name + '!';
+}
+function sayHello() {
+  alert(message('your name'));
+}
+</pre>
+
+<p>Now the <code>message</code> function takes a parameter, <code>name</code>. It can use the name when building its string. Where does it get the name? From the place it was called in <code>sayHello</code>. When we call the function, we can put parameters inside the parenthesis.</p>
+
+<h2>Variables</h2>
+
+<p>Let's change the name a different way: with a variable. A variable in Javascript is different from a variable in math. In Javascript, a variable is more like a bucket that can hold a value. Then you can check the bucket later on to see what the value is, or you can set a different value inside the bucket. Here's how to use a variable:</p>
+
+<pre class='prettyprint linenums'>
+var name = 'Joe';
+function message() {
+  return 'hey there, ' + name + '!';
+}
+function sayHello() {
+  alert(message());
+  name = 'Bob';
+  alert(message());
+}
+</pre>
+
+<p>The <code>message</code> function uses the value of the name variable to make the message. Then inside <code>sayHello</code> we alert with the first name (Joe) then we change the name and alert again. This time, when <code>message</code> checks the name, it's been set to Bob.</p>
+
+<h2>Conditionals</h2>
+
+<p>In Javascript, you can decide whether or not to perform an action by using a conditional. Conditionals are things like <code>if</code>, <code>else</code>, and <code>switch</code>. Let's take a look at using an if/else with our code:</p>
+
+<pre class='prettyprint linenums'>
+var name = 'Joe';
+function message() {
+  if (name === 'Joe') {
+    return 'hey buddy!';
+  } else {
+    return 'do I know you?';
+  }
+}
+function sayHello() {
+  alert(message());
+}
+</pre>
+
+<p>If you reload the page, it will say 'hey buddy!' because name is Joe. But try changing the name variable to something else and reloading the page.</p>
+
+<h2>Looping</h2>
+
+<p>Sometimes, you have to process a lot of items. For example, let's say we needed to greet three people. First, let's see how we can put those people into an <code>Array</code>:</p>
+
+<pre class='prettyprint linenums'>
+var names = ['Joe', 'Bob'];
+alert(names[0]);
+alert(names[1]);
+</pre>
+
+<p>Arrays are lists of items. You can get to a value in an array by asking by <code>index</code>, which is the position in the array. Indexes start at 0 and count up. So <code>names[0]</code> is <code>'Joe'</code> and <code>names[1]</code> is <code>'Bob'</code>.</p>
+
+<p>However, if we wanted to write code that doesn't need to know how many names are in the array, we would have to use a loop:</p>
+
+<pre class='prettyprint linenums'>
+var names = ['Joe', 'Bob'];
+for (i in names) {
+  alert(names[i]);
+}
+</pre>
+
+<p>This is a <code>for</code> loop. It will iterate through each index in the array and assign the index to the <code>i</code> variable. <code>i</code> could be anything we want. We could have called it <code>position</code> or something else, because it is a variable.</p>
+
+<p>There is another kind of <code>for</code> loop, and also a <code>while</code> loop, as shown below:</p>
+
+<pre class='prettyprint linenums'>
+var names = ['Joe', 'Bob'];
+for (var i = 0; i < names.length; i++) {
+  alert(names[i]);
+}
+
+var i = 0;
+while(i < names.length) {
+  alert(names[i]);
+  i++;
+}
+</pre>
+
+<p>The above syntax for a <code>for</code> loop is more complicated than the previous syntax, but it is also more powerful, as you could change the way Javascript performs the looping. <code>while</code> loops are usually used in scenarios where you want to perform the same action over and over until something in the system changes.</p>
+
+<h2>Experiment</h2>
+
+<p>Experiment with your code for a bit. Try modifying the names array, or loop over different content in a different way. Try using more than one variable to combine them into a more complicated message based on conditionals.</p>
+
+<hr>
+<a href="/bjs/3-dom-basics.html" class='btn btn-primary'>Next Lesson &raquo;</a>

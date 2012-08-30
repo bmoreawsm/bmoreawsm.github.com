@@ -1,0 +1,114 @@
+---
+layout: bjs
+title: DOM Basics
+---
+<div class='hero-unit'>
+  <h1>{{ page.title }}</h1>
+  <p>The Document Object Model is how Javascript interacts with HTML<br>In this lesson, we'll manipulate the page with Javascript</p>
+</div>
+
+<h2>Output to the DOM</h2>
+<p>First, we're going to need a place to put our output. Let's change the body of our page:</p>
+
+<pre class='prettyprint linenums'>
+&lt;body onload='ready()'&gt;
+  &lt;h1&gt;Learning Javascript&lt;/h1&gt;
+  &lt;pre id='output'&gt;&lt;/pre&gt;
+&lt;/body&gt;
+</pre>
+
+<p>The pre has the id <code>output</code>, which will let us grab it from Javascript. Next, let's setup our body and function to run when the page is ready:</p>
+
+<pre class='prettyprint linenums'>
+function ready() {
+  alert('ready to go');
+}
+</pre>
+
+<p>Now, we can use some of the DOM functions to grab the <code>pre</code> and change its content:</p>
+
+<pre class='prettyprint linenums'>
+function ready() {
+  document.getElementById('output').innerHTML = "Hello &lt;strong&gt;there&lt;/strong&gt;";
+}
+</pre>
+
+<p>That's a pretty long way to just output some text. Let's make a function to do it for us:</p>
+<pre class='prettyprint linenums'>
+function output(message) {
+  document.getElementById('output').innerHTML = message;
+}
+function ready() {
+  output("Hello friend");
+}
+</pre>
+
+<p>Now let's output multiple messages:</p>
+<pre class='prettyprint linenums'>
+function output(message) {
+  document.getElementById('output').innerHTML = message;
+}
+function ready() {
+  output("Hello friend");
+  output("Hello enemy");
+}
+</pre>
+
+<p>This time, it will say "Hello enemy", and "Hello friend" got overwritten. We'd really like <code>output</code> to append to the pre each time, so we'll use Javascript's <code>+=</code> operator, which will append to the string:</p>
+
+<pre class='prettyprint linenums'>
+function output(message) {
+  document.getElementById('output').innerHTML += message + '&lt;br&gt;';
+}
+</pre>
+
+<p>We also add a <code>&lt;br&gt;</code> so that it breaks the line for each message.</p>
+
+<h2>Output based on Data</h2>
+
+<p>Now it's time to join all of our powers together to output information to the dom based on some data:</p>
+
+<pre class='prettyprint linenums'>
+var data = [4, 2, 9, 7];
+function ready() {
+  for (i in data) {
+    output(data[i]);
+  }
+}
+</pre>
+
+<p>Now, let's do something crazy: a loop inside a loop!</p>
+
+<pre class='prettyprint linenums'>
+var data = [4, 2, 9, 7];
+function ready() {
+  for (i in data) {
+    var number = data[i];
+    var message = ""
+    while (number > 0) {
+      message += "|";
+      number--;
+    }
+    output(message);
+  }
+}
+</pre>
+
+<p>So, what's going on here? First, we get the number from the array and set it to the <code>number</code> variable. Then, we create a <code>message</code> variable that starts off as an empty string. Next, we are going to keep looping as long as the number is 0. Each time we loop, we add a <code>|</code> to the message, and we decrement the number with <code>--</code>. <code>number--</code> is like saying <code>number = number - 1</code>. Once <code>number</code> hits 0, we output the message. So, each step of the loop looks like this:</p>
+
+<table class='table'>
+  <tr>
+    <th>Step</th>
+    <th><code>number</code></th>
+    <th><code>message</code></th>
+  </tr>
+  <tr><td>1</td><td>4</td><td>""</td></tr>
+  <tr><td>2</td><td>3</td><td>"|"</td></tr>
+  <tr><td>3</td><td>2</td><td>"||"</td></tr>
+  <tr><td>4</td><td>1</td><td>"|||"</td></tr>
+  <tr><td>5</td><td>0</td><td>"||||"</td></tr>
+</table>
+
+<p>And, we will do this for every element in our data array. The result: a bar chart, circa 1985!</p>
+
+<h2>Get information from a field</h2>
