@@ -1,0 +1,79 @@
+---
+layout: bjs
+title: Javascript in the Page
+---
+<div class='hero-unit'>
+  <h1>{{ page.title }}</h1>
+  <p>Javascript runs on all web browsers<br>In this lesson, we'll add javascript to an HTML page</p>
+</div>
+
+<h2>HTML scaffold</h2>
+
+<p>First, we'll start off with a basic HTML page. Open sublime text, and paste in this code:</p>
+
+<pre class='prettyprint linenums'>
+&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Learning Javascript&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Learning Javascript&lt;/h1&gt;
+    &lt;p&gt;I'm going to learn javascript!&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p>Save this file in a convenient location, like your Desktop, and give it a name ending in <code>.html</code> like <code>learning-javascript.html</code></p>
+
+<p>Open the page with Chrome. You can do this by dragging the page into Chrome, or by hitting Command+O (mac) or Control+O (windows) and locating the file from there.</p>
+
+<p>You should now see your html page in your browser.</p>
+
+<h2>Add Javascript</h2>
+
+<p>Javascript can be added to your page by using the <code>&lt;script&gt;</code> tag inside the <code>&lt;head&gt;</code> tag of the document. Add some javascript to the head, like this:</p>
+
+<pre class='prettyprint linenums'>
+&lt;head&gt;
+  &lt;title&gt;Learning Javascript&lt;/title&gt;
+  &lt;script type='text/javascript'&gt;
+    alert('hello, world!');
+  &lt;/script&gt;
+&lt;/head&gt;
+</pre>
+
+<p>Now, refresh your page, and you should see an alert box pop up and say "hello, world!"</p>
+
+<h2>Run on page load</h2>
+
+<p>Notice that the page content is not displayed when the alert box pops up. This is because the alert box code is run before the content of the page is run. This is going to be a problem later on when we write some javascript to interact with elements in the page.</p>
+
+<p>First, we'll wrap our alert code in a <code>function</code>:</p>
+
+<pre class='prettyprint linenums'>
+function sayHello() {
+  alert('hello, world!');
+}
+</pre>
+
+<p>Next, edit the <code>body</code> tag so that it calls our function on page load:</p>
+
+<pre class='prettyprint linenums'>
+&lt;body onload='sayHello()'&gt;
+</pre>
+
+<p>Refresh your page, and it should say hello, and the content should be visible.</p>
+
+<h2>Experiment</h2>
+
+<p>Experiment with your page a bit. Here are some suggestions, but feel free to do whatever you'd like:</p>
+
+<ol>
+  <li>Change the message in the alert box</li>
+  <li>Alert more than once</li>
+  <li>Change <code>alert</code> to <code>confirm</code> what happens?</li>
+</ol>
+
+<hr>
+<a href="/bjs/2-javascript-basics.html" class='btn btn-primary'>Next Lesson &raquo;</a>
